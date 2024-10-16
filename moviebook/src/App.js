@@ -1,7 +1,7 @@
 import "./App.css";
 import Footer from "./components/footer";
 import Header from "./components/header";
-import MoviesGrid from "./components/moviesgrid";
+import MoviesCard from "./components/moviescard";
 import "./styles.css";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <div className="container">
         <Header />
-        <MoviesGrid />
+        <MoviesCard />
       </div>
       <Footer />
     </div>
