@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MovieCard from './moviecard';
 
-const MoviesCard = () => {
-    const [movies, setMovies] = useState([]);
+const MoviesCard = ({ movies, watchlist, toggleWatchList }) => {
+
     const [searchText, setSearchText] = useState('');
     const [genre, setGenre] = useState('All Genres');
     const [rating, setRating] = useState('All');
-
-    useEffect(() => {
-        fetch('movies.json')
-            .then(response => response.json())
-            .then(data => setMovies(data));
-    }, []);
 
     const onSearchChange = (e) => {
         setSearchText(e.target.value.toLowerCase());
@@ -81,7 +75,11 @@ const MoviesCard = () => {
             <div className='movies-grid'>
                 {
                     filteredMovies.map(movie => (
-                        <MovieCard key={movie.id} movie={movie} />
+                        <MovieCard key={movie.id}
+                            movie={movie}
+                            toggleWatchList={toggleWatchList}
+                            isWatchlisted={watchlist.includes(movie.id)}
+                        />
                     ))
                 }
             </div>
